@@ -1,6 +1,8 @@
 package headfirst.designpatterns.반복자_패턴과_컴포지트_패턴;
 
-public class DinerMenuIterator implements Iterator {
+import java.util.Iterator;
+
+public class DinerMenuIterator implements Iterator<MenuItem> {
     MenuItem[] menuItems;
     int position = 0;
 
@@ -14,6 +16,7 @@ public class DinerMenuIterator implements Iterator {
         position++;
         return menuItem;
     }
+
     @Override
     public boolean hasNext() {
         if (position >= menuItems.length || menuItems[position] == null) {
@@ -21,5 +24,10 @@ public class DinerMenuIterator implements Iterator {
         } else {
             return true;
         }
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("메뉴 항목은 지우면 안 됩니다.");
     }
 }
