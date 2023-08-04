@@ -116,7 +116,10 @@
 
 ## 11. 프록시 패턴
 
-#### 실행 방법
+#### 원격 프록시 실행 방법 및 설명
+
+- cmd 상에서 한글이 문제가 되기 때문에 proxy_pattern 패키지로 따로 빼서 작업
+- 다른 프록시 패턴은 프록시_패턴 패키지에서 작업 
 
 1. src 폴더에서 cmd를 연다.
 2. javac headfirst/designpatterns/proxy_pattern/*.java -encoding UTF8 명령어로 UTF8 기반 자바 파일 위치에
