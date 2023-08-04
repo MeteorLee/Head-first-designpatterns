@@ -1,6 +1,8 @@
 package headfirst.designpatterns.proxy_pattern.State;
 
-public interface State {
+import java.io.Serializable;
+
+public interface State extends Serializable {
 
     void insertQuarter();
     void ejectQuarter();

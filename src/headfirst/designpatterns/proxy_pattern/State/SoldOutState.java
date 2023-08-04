@@ -4,7 +4,8 @@ import headfirst.designpatterns.proxy_pattern.GumballMachine;
 
 public class SoldOutState implements State {
 
-    GumballMachine gumballMachine;
+    private static final long serialVersionUID = 2L;
+    transient GumballMachine gumballMachine;
 
     public SoldOutState(GumballMachine gumballMachine) {
         this.gumballMachine = gumballMachine;
