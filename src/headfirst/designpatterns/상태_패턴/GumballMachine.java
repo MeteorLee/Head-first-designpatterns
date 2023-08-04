@@ -1,95 +1,53 @@
 package headfirst.designpatterns.상태_패턴;
 
+import headfirst.designpatterns.상태_패턴.상태.*;
+
 public class GumballMachine {
 
-    final static int SOLD_OUT = 0;
-    final static int NO_QUARTER = 1;
-    final static int HAS_QUARTER = 2;
-    final static int SOLD = 3;
+    State soldOutState;
+    State noQuarterState;
+    State hasQuarterState;
+    State soldState;
 
-    int state = SOLD_OUT;
+    State state = soldOutState;
     int count = 0;
 
-    public GumballMachine(int count) {
-        this.count = count;
-        if (count > 0) {
-            state = NO_QUARTER;
+
+
+    public GumballMachine(int numberGumballs) {
+        soldState = new SoldOutState(this);
+        noQuarterState = new NoQuarterState(this);
+        hasQuarterState = new HasQuarterState(this);
+        soldState = new SoldState(this);
+
+        this.count = numberGumballs;
+        if (numberGumballs > 0) {
+            state = noQuarterState;
+        } else {
+            state = soldOutState;
         }
     }
 
     public void insertQuarter() {
-        if (state == HAS_QUARTER) {
-            System.out.println("동전은 한 개만 넣어주세요.");
-        } else if (state == NO_QUARTER) {
-            state = HAS_QUARTER;
-            System.out.println("동전을 넣으셨습니다.");
-        } else if (state == SOLD_OUT) {
-            System.out.println("매진되었습니다. 다음 기회에 이용해 주세요.");
-        } else if (state == SOLD) {
-            System.out.println("알맹이를 내보내고 있습니다.");
-        }
+        state.insertQuarter();
     }
 
     public void ejectQuarter() {
-        if (state == HAS_QUARTER) {
-            System.out.println("동전이 반환됩니다.");
-            state = NO_QUARTER;
-        } else if (state == NO_QUARTER) {
-            System.out.println("동전을 넣어 주세요.");
-        } else if (state == SOLD) {
-            System.out.println("이미 알맹이를 뽑으셨습니다.");
-        } else if (state == SOLD_OUT) {
-            System.out.println("동전을 넣지 않으셨습니다. 동전이 반환되지 않습니다.");
-        }
+        state.ejectQuarter();
     }
 
     public void turnCrank() {
-        if (state == SOLD) {
-            System.out.println("손잡이는 한 번만 돌려 주세요.");
-        } else if (state == NO_QUARTER) {
-            System.out.println("동전을 넣어 주세요.");
-        } else if (state == SOLD_OUT) {
-            System.out.println("매진되었습니다.");
-        } else if (state == HAS_QUARTER) {
-            System.out.println("손잡이를 돌리셨습니다.");
-            state = SOLD;
-            dispense();
-        }
+        state.turnCrank();
+        state.dispense();
     }
 
-    private void dispense() {
-        if (state == SOLD) {
-            System.out.println("알맹이를 내보내고 있습니다.");
+    public void releaseBall() {
+        System.out.println("알맹이를 내보내고 있습니다.");
+        if (count > 0) {
             count--;
-            if (count == 0) {
-                System.out.println("더 이상 알맹이가 없습니다.");
-                state = SOLD_OUT;
-            } else {
-                state = NO_QUARTER;
-            }
-        } else if (state == HAS_QUARTER) {
-            System.out.println("알맹이를 내보낼 수 없습니다.");
-        } else if (state == NO_QUARTER) {
-            System.out.println("동전을 넣어주세요.");
-        } else if (state == SOLD_OUT) {
-            System.out.println("매진되었습니다.");
         }
     }
 
-    @Override
-    public String toString() {
-        return "\n주식회사 왕뽑기\n자바로 돌아가는 최신형 뽑기 기계\n" +
-                "남은 개수 : " + count +
-                "\n"+ state + "\n";
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
 
     public int getCount() {
         return count;
@@ -97,5 +55,52 @@ public class GumballMachine {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    @Override
+    public String toString() {
+        return "\n주식회사 왕뽑기\n자바로 돌아가는 최신형 뽑기 기계\n" +
+                "남은 개수 : " + count +
+                "\n" + state + "\n";
+    }
+
+    public State getSoldOutState() {
+        return soldOutState;
+    }
+
+    public void setSoldOutState(State soldOutState) {
+        this.soldOutState = soldOutState;
+    }
+
+    public State getNoQuarterState() {
+        return noQuarterState;
+    }
+
+    public void setNoQuarterState(State noQuarterState) {
+        this.noQuarterState = noQuarterState;
+    }
+
+    public State getHasQuarterState() {
+        return hasQuarterState;
+    }
+
+    public void setHasQuarterState(State hasQuarterState) {
+        this.hasQuarterState = hasQuarterState;
+    }
+
+    public State getSoldState() {
+        return soldState;
+    }
+
+    public void setSoldState(State soldState) {
+        this.soldState = soldState;
     }
 }
