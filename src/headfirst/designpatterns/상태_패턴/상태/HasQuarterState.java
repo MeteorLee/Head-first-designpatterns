@@ -2,8 +2,10 @@ package headfirst.designpatterns.상태_패턴.상태;
 
 import headfirst.designpatterns.상태_패턴.GumballMachine;
 
-public class HasQuarterState implements State{
+import java.util.Random;
 
+public class HasQuarterState implements State{
+    Random randomWinner = new Random(System.currentTimeMillis());
     GumballMachine gumballMachine;
 
     public HasQuarterState(GumballMachine gumballMachine) {
@@ -24,11 +26,21 @@ public class HasQuarterState implements State{
     @Override
     public void turnCrank() {
         System.out.println("손잡이를 돌리셨습니다.");
-        gumballMachine.setState(gumballMachine.getSoldState());
+        int winner = randomWinner.nextInt(10);
+        if ((winner == 0) && (gumballMachine.getCount() > 0)) {
+            gumballMachine.setState(gumballMachine.getWinnerState());
+        } else {
+            gumballMachine.setState(gumballMachine.getSoldState());
+        }
     }
 
     @Override
     public void dispense() {
         System.out.println("알맹이를 내보낼 수 없습니다.");
+    }
+
+    @Override
+    public void refill() {
+
     }
 }

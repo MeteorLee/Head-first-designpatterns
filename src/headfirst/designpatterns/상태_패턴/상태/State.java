@@ -7,4 +7,5 @@ public interface State {
     void turnCrank();
     void dispense();
 
+    void refill();
 }
