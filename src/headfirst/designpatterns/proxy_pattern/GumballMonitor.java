@@ -1,4 +1,4 @@
-package headfirst.designpatterns.프록시_패턴;
+package headfirst.designpatterns.proxy_pattern;
 
 public class GumballMonitor {
     GumballMachine gumballMachine;

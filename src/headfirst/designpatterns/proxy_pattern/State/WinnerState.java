@@ -1,6 +1,6 @@
-package headfirst.designpatterns.프록시_패턴.상태;
+package headfirst.designpatterns.proxy_pattern.State;
 
-import headfirst.designpatterns.프록시_패턴.GumballMachine;
+import headfirst.designpatterns.proxy_pattern.GumballMachine;
 
 public class WinnerState implements State {
     GumballMachine gumballMachine;

@@ -1,6 +1,6 @@
-package headfirst.designpatterns.프록시_패턴;
+package headfirst.designpatterns.proxy_pattern;
 
-import headfirst.designpatterns.프록시_패턴.상태.*;
+import headfirst.designpatterns.proxy_pattern.State.*;
 
 public class GumballMachine {
 

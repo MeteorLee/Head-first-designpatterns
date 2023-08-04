@@ -1,4 +1,4 @@
-package headfirst.designpatterns.프록시_패턴;
+package headfirst.designpatterns.proxy_pattern;
 
 public class GumballMachineTestDrive {
     public static void main(String[] args) {

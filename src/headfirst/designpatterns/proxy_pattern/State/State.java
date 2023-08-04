@@ -1,4 +1,4 @@
-package headfirst.designpatterns.프록시_패턴.상태;
+package headfirst.designpatterns.proxy_pattern.State;
 
 public interface State {
 
