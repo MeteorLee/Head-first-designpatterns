@@ -13,8 +13,9 @@ public class GumballMachine {
     State state = soldOutState;
     int count = 0;
 
+    String location;
 
-    public GumballMachine(int numberGumballs) {
+    public GumballMachine(String location, int numberGumballs) {
         soldState = new SoldOutState(this);
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
@@ -27,6 +28,8 @@ public class GumballMachine {
         } else {
             state = soldOutState;
         }
+
+        this.location = location;
     }
 
     public void insertQuarter() {
@@ -53,6 +56,10 @@ public class GumballMachine {
         this.count += count;
         System.out.println("The gumball machine was just refilled; its new count is : " + this.count);
         state.refill();
+    }
+
+    public String getLocation() {
+        return location;
     }
 
     public void setWinnerState(State winnerState) {
