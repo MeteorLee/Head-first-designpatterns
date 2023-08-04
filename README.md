@@ -113,3 +113,24 @@
 상태 패턴
 - 객체의 내부 상태가 바뀜에 따라서 객체의 행동을 바뀔 수 있도록 해 줍니다.
 마치 객체의 클래스가 바뀌는 것과 같은 결과를 얻을 수 있습니다.
+
+## 11. 프록시 패턴
+
+#### 실행 방법
+
+1. src 폴더에서 cmd를 연다.
+2. javac headfirst/designpatterns/proxy_pattern/*.java -encoding UTF8 명령어로 UTF8 기반 자바 파일 위치에
+클래스 파일이 생성되도록 한다.(cmd 실행 과정에서 필요함)
+3. cmd에서 rmi 레지스트리를 실행한다.
+```shell
+rmiregistry &
+```
+4. 서비스 객체인 GumballMachinTestDrive를 실행
+```shell
+java headfirst/designpatterns/proxy_pattern/GumballMachineTestDrive localhost 300
+```
+뒤의 값은 args[] 값이다.
+5. 클라이언트 객체를 실행한다.
+```shell
+java headfirst/designpatterns/proxy_pattern/GumballMonitorTestDrive localhost
+```

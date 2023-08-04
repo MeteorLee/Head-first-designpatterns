@@ -1,4 +1,4 @@
-package headfirst.designpatterns.proxy_pattern.State;
+package headfirst.designpatterns.proxy_pattern.States;
 
 import headfirst.designpatterns.proxy_pattern.GumballMachine;
 
