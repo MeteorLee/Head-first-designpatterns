@@ -137,3 +137,6 @@ java headfirst/designpatterns/proxy_pattern/GumballMachineTestDrive localhost 30
 ```shell
 java headfirst/designpatterns/proxy_pattern/GumballMonitorTestDrive localhost
 ```
+
+프록시 패턴
+- 특정 객체로의 접근을 제어하는 대리인(특정 객체를 대변하는 객체)을 제공합니다.
